@@ -20,7 +20,7 @@ pip install -e .[example]
 
 ##### Docker Environment
 
-Our docker image is built based on Android dockers from [budtmo/docker-android: Android in docker solution with noVNC supported and video recording](https://github.com/budtmo/docker-android), which requires virtualization as described in https://github.com/budtmo/docker-android?tab=readme-ov-file#quick-start.
+Our docker image contains Android docker image from [budtmo/docker-android: Android in docker solution with noVNC supported and video recording](https://github.com/budtmo/docker-android), which requires virtualization as described in https://github.com/budtmo/docker-android?tab=readme-ov-file#quick-start.
 
 In short, our docker image can only be run under ***Ubuntu OS***. If you are using other systems,  you need to use Virtual Machine that support Virtualization with Ubuntu OS. To check if the virtualization is enabled:
 
