@@ -1,7 +1,9 @@
 
 ### 🚀 Prerequisite Environment Setup
-There are two ways of building prerequisites of AppForge: Through docker deployment (needs your machine support CPU virtualization) or local emulator (needs to build Android Emulator on your machine).
-If you are evaluating through docker, check *Docker_Setup*; or you are using local emulator or devices, check *Local_Emulator_Setup* first .
+There are two ways of building prerequisites of AppForge: Through docker deployment (needs your machine support CPU virtualization) or local emulator (needs to build Android Emulator on your machine). 
+
+If you are evaluating through docker, check *Docker_Setup*; or you are using local emulator or devices, check *Local_Emulator_Setup* first.
+
 #### Docker Setup
 
 ##### Docker Environment
@@ -31,7 +33,7 @@ docker image pull zenithfocuslight/appforge:latest
 
 ##### Prerequisite
 
-Make sure you have Android Emulator and SDK installed on your machine.
+Make sure you have Android Studio and SDK installed on your machine. For users who haven't installed these prerequisites, you can check https://github.com/AppForge-Bench/AppForge/blob/main/documentation/local_emulator.md. However, if you don't have them installed on your machine before and are able to use CPU virtualization, we strongly recommend you to use docker environment. 
 
 ##### Download Evaluation Files
 
