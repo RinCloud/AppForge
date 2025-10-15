@@ -9,15 +9,16 @@ If you are evaluating through docker, check *Docker_Setup*; or you are using loc
 
 Our docker image contains Android docker image from [budtmo/docker-android: Android in docker solution with noVNC supported and video recording](https://github.com/budtmo/docker-android), which requires virtualization as described in https://github.com/budtmo/docker-android?tab=readme-ov-file#quick-start.
 
-In short, our docker image can only be run under ***Ubuntu OS***. If you are using other systems,  you need to use Virtual Machine that support Virtualization with Ubuntu OS. To check if the virtualization is enabled:
+In short, our docker image can only be run under ***Ubuntu OS***. If you are using other systems,  you might need to use Virtual Machine that support Virtualization with Ubuntu OS. To check if the virtualization is enabled:
 
 ```
 sudo apt install cpu-checker
 kvm-ok
 ```
 
+The original repo of Android Docker provides many solutions to different system users.
 For Win11 user, you can check https://github.com/budtmo/docker-android?tab=readme-ov-file#wsl2-hardware-acceleration-windows-11-only.
-For cloud service user, you can check https://github.com/budtmo/docker-android/blob/master/documentations/USE_CASE_CLOUD.md in the original repo of Android Docker.
+For cloud service user, you can check https://github.com/budtmo/docker-android/blob/master/documentations/USE_CASE_CLOUD.md.
 
 If you encounter unexpected errors with CPU Virtualization, you can also check the issues in the original repo of Android Docker: https://github.com/budtmo/docker-android/issues.
 
