@@ -1,6 +1,5 @@
-
 ### 🚀 Prerequisite Environment Setup
-There are two ways of building prerequisites of AppForge: Through docker deployment (needs your machine support CPU virtualization) or local emulator (needs to build Android Emulator on your machine). 
+There are two ways of building prerequisites of AppForge: Through docker deployment (needs your machine support CPU virtualization) or local emulator (needs to build Android Emulator on your machine). Both options need your machine supports **CPU Virtualization**.
 
 If you are evaluating through docker, check *Docker_Setup*; or you are using local emulator or devices, check *Local_Emulator_Setup* first.
 
@@ -43,6 +42,8 @@ Download evaluation repo and install dependencies.
 git pull https://github.com/PKU-ASE-RISE/AppForge_Bench.git
 cd AppForge_Bench
 pip install -r requirements.txt
+
+python -m uiautomator2 init
 ```
 
 ### 🚀 Environment Setup
@@ -93,4 +94,3 @@ python examples/test.py --emulator_id  emulator-5554 --bench_folder /mnt/AppForg
 To activate self-fix with compilation feedback, set parameter *--self_fix_attempts*. 
 
 More detailed running parameters can be seen in the source code.
-
