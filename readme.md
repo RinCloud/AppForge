@@ -1,21 +1,7 @@
 
-### 🚀 Environment Setup
-
-If you are evaluating through local emulator or devices, check *Local_Emulator_Setup* first ; otherwise, check *Docker_Setup*.
-
-Then download then repo and install our module **AppForge**:
-
-```python
-git clone https://github.com/PKU-ASE-RISE/AppForge
-
-cd AppForge
-pip install -e .
-# or run examples:
-pip install -e .[example]
-```
-
-
-
+### 🚀 Prerequisite Environment Setup
+There are two ways of building prerequisites of AppForge: Through docker deployment (needs your machine support CPU virtualization) or local emulator (needs to build Android Emulator on your machine).
+If you are evaluating through docker, check *Docker_Setup*; or you are using local emulator or devices, check *Local_Emulator_Setup* first .
 #### Docker Setup
 
 ##### Docker Environment
@@ -28,6 +14,8 @@ In short, our docker image can only be run under ***Ubuntu OS***. If you are usi
 sudo apt install cpu-checker
 kvm-ok
 ```
+
+If you encounter unexpected errors with CPU Virtualization, you can also check the issues in the original repo of Android Docker: https://github.com/budtmo/docker-android/issues.
 
 ##### Docker Pull
 
@@ -52,6 +40,19 @@ git pull https://github.com/PKU-ASE-RISE/AppForge_Bench.git
 cd AppForge_Bench
 pip install -r requirements.txt
 ```
+
+### 🚀 Environment Setup
+Then download then repo and install our module **AppForge**:
+
+```python
+git clone https://github.com/PKU-ASE-RISE/AppForge
+
+cd AppForge
+pip install -e .
+# or run examples:
+pip install -e .[example]
+```
+
 
 
 
