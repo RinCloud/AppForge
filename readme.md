@@ -16,6 +16,7 @@ sudo apt install cpu-checker
 kvm-ok
 ```
 
+For Win11 user, you can check https://github.com/budtmo/docker-android?tab=readme-ov-file#wsl2-hardware-acceleration-windows-11-only.
 For cloud service user, you can check https://github.com/budtmo/docker-android/blob/master/documentations/USE_CASE_CLOUD.md in the original repo of Android Docker.
 
 If you encounter unexpected errors with CPU Virtualization, you can also check the issues in the original repo of Android Docker: https://github.com/budtmo/docker-android/issues.
