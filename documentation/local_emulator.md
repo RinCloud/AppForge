@@ -6,7 +6,7 @@ Check https://developer.android.google.cn/studio/install and follow the instruct
 
 ##### Install Devices and through SdkManager
 
-You can find your Android SDK location through option *File | Settings | Languages & Frameworks | Android SDK* in Android Studio. To use, you need to select a platform with API level=31 in *SDK Platforms* and click *apply*.
+You can find your Android SDK location through option *File | Settings | Languages & Frameworks | Android SDK* in Android Studio. You need to select a platform with API level=31 in *SDK Platforms* and click *apply*.
 
 Then, you need to add the path to your environment variables.
 
