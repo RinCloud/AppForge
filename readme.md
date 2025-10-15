@@ -3,7 +3,7 @@ There are two ways of building prerequisites of AppForge: Through docker deploym
 
 If you are evaluating through docker, check *Docker_Setup*; or you are using local emulator or devices, check *Local_Emulator_Setup* first.
 
-#### Docker Setup
+#### 🚀 Docker Setup
 
 ##### Docker Environment
 
@@ -29,7 +29,7 @@ Make sure docker is installed on your device, and run:
 docker image pull zenithfocuslight/appforge:latest
 ```
 
-#### Local Emulator Setup
+#### 🚀 Local Emulator Setup
 
 ##### Prerequisite
 
