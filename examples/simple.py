@@ -93,7 +93,7 @@ class simple_agent():
 Your generated code can't be successfully compiled!\n"
         else:
             user_prompt = f"Your generated code can't be successfully compiled! Compilation errors are:\n\
-{errors}\n\n\n"
+{compile_errors}\n\n\n"
         user_prompt += 'Remember, '+self.messages[0]['content'][0]['text'] 
         
         self.messages += [
