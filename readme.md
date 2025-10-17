@@ -22,12 +22,13 @@ For cloud service user, you can check https://github.com/budtmo/docker-android/b
 
 If you encounter unexpected errors with CPU Virtualization, you can also check the issues in the original repo of Android Docker: https://github.com/budtmo/docker-android/issues.
 
-##### Docker Pull
+##### Docker Pull & Run
 
 Make sure docker is installed on your device, and run:
 
 ```
 docker image pull zenithfocuslight/appforge:latest
+docker run -d -p 6080:6080  --device /dev/kvm zenithfocuslight/appforge:latest
 ```
 
 #### 🚀 Local Emulator Setup
