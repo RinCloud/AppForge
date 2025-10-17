@@ -1,4 +1,4 @@
 from .appforge import AppForge
-import appforge
-import extracts
-import utils
+from . import appforge
+from . import extracts
+from . import utils
