@@ -29,6 +29,12 @@ Make sure docker is installed on your device, and run:
 ```
 docker image pull zenithfocuslight/appforge:latest
 ```
+You can check whether you can successfully run the docker image by:
+```
+docker run --rm -d -p 6080:6080  --device /dev/kvm zenithfocuslight/appforge:latest
+```
+but you don't have to keep it run when running our code for we'll start a new one.
+
 
 #### 🚀 Local Emulator Setup
 
