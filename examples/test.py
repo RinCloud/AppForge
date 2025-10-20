@@ -1,5 +1,5 @@
 from LLMs import qwen3_coder,naive,deepseekchat,deepseekr1
-from cluade_code import claude_code
+from claude_code import claude_code
 import json,os,random,tarfile
 from pathlib import Path
 import glob,sys,argparse
