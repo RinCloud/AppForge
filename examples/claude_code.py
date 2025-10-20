@@ -37,36 +37,32 @@ You should directly modify the file in the given file directory to implement the
         
         shutil.rmtree(workspace, ignore_errors=True)
         shutil.copytree(src, workspace)
-        try:
-            self.run(workspace, desc)
 
-            changed: dict[str, str] = {}
-            for root, _dirs, files in os.walk(workspace):
-                for name in files:
-                    p = Path(root) / name
-                    rel = str(p.relative_to(workspace))
-                    src_file = src / rel
+        self.run(workspace, desc)
 
+        changed: dict[str, str] = {}
+        for root, _dirs, files in os.walk(workspace):
+            for name in files:
+                p = Path(root) / name
+                rel = str(p.relative_to(workspace))
+                src_file = src / rel
+
+                try:
+                    new_text = p.read_text(encoding="utf-8")
+                except Exception:
+                    continue
+
+                if not src_file.exists():
+                    changed[rel] = new_text
+                else:
                     try:
-                        new_text = p.read_text(encoding="utf-8")
+                        old_text = src_file.read_text(encoding="utf-8")
                     except Exception:
                         continue
-
-                    if not src_file.exists():
+                    if new_text != old_text:
                         changed[rel] = new_text
-                    else:
-                        try:
-                            old_text = src_file.read_text(encoding="utf-8")
-                        except Exception:
-                            continue
-                        if new_text != old_text:
-                            changed[rel] = new_text
 
-            print("="*10+"Status"+"="*10)
-            print(changed)
-            return changed
 
-        finally:
-            shutil.rmtree(tmp_root, ignore_errors=True)
-    
+        return changed
+
    
