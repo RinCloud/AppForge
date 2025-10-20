@@ -1,4 +1,5 @@
 from LLMs import qwen3_coder,naive,deepseekchat,deepseekr1
+from cluade_code import claude_code
 import json,os,random,tarfile
 from pathlib import Path
 import glob,sys,argparse
@@ -26,13 +27,15 @@ if __name__ == "__main__":
                     help="where to put generated apks")
     # ap.add_argument('--template_path', default = 'compiler/templates/empty_activity')
     ap.add_argument('--bench_folder', default = None,
-                    help="where you download bench folder; required when test locally")
+                    help="where you download bench folder; required when test locally")    
+    ap.add_argument('--work_space', default = 'tmp/workspace',
+                    help="where agent temporally uses")
     ap.add_argument('--sdk_path', default = None,
                     help="where you have your android sdk; required when test locally")
     
     
     ap.add_argument("--model", default="qwen3coder",
-                    choices=["qwen3coder","naive","deepseekv3","deepseekr1"])
+                    choices=["qwen3coder","naive","deepseekv3","deepseekr1","claude_code"])
     ap.add_argument("--api_key_path",default=None,
                     help="where you have your api keys")
     
@@ -86,6 +89,9 @@ if __name__ == "__main__":
             elif args.model == 'deepseekr1':
                 simpleAgent = simple_agent(simple_output_parser, deepseekr1(api_key_path=Path(args.api_key_path).absolute()),\
                     template_repo = Path(args.template_path))
+            elif args.model == 'claude_code':
+                assert args.self_fix_attempts==0
+                simpleAgent = claude_code(args.workspace,args.template_path)
             elif args.model == 'naive':
                 simpleAgent = simple_agent(simple_output_parser, naive(),\
                     template_repo = Path(args.template_path))
