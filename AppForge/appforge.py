@@ -128,6 +128,8 @@ class AppForge:
         return self.app_folder / str(task_id)
     def compile_log(self, task_id):
         return self.apk_folder(task_id) / 'compile.log'
+    def raw_log_file(self, task_id):
+        return self.apk_folder(task_id) / 'raw_output.log'
     def test_log(self, task_id):
         return self.apk_folder(task_id) / 'test.log'
     def fuzz_log(self, task_id):
@@ -159,7 +161,7 @@ class AppForge:
                 assert 0, 'Emulator offline!'
         
         
-    def compile_json_based_on_template(self, changed: dict[str, str], task_id: int):
+    def compile_json_based_on_template(self, changed: dict[str, str], task_id: int, raw_log: Optional[str] = None):
         """
         Apply changes from JSON on template and compile the application.
         
@@ -173,6 +175,10 @@ class AppForge:
         print(f'AppForge: Compiling on {task_id}...')
         remove_directory(self.apk_folder(task_id))
         self.apk_folder(task_id).mkdir()
+
+        with open(self.raw_log_file(task_id), 'w+', encoding='utf-8') as file:
+            if raw_log:
+                file.write(raw_log)
         if changed:
             with open(self.json_file(task_id), 'w+', encoding='utf-8') as file:
                 json.dump(changed, file)
@@ -193,7 +199,7 @@ class AppForge:
             else:
                 return extract_error(output, ignore_path_str=str(self.apk_folder(task_id)))
         else:
-            output = 'Wrong Json Format'
+            output = 'Wrong Json Format\n'
             with open(self.compile_log(task_id),'w+') as file:
                 file.write(output)
             return output
