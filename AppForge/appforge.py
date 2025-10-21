@@ -50,6 +50,8 @@ class AppForge:
         self.app_folder = base_folder / runs
         self.app_folder.mkdir(parents=True, exist_ok=True)
         self.use_docker = use_docker
+        self.raw_folder = self.app_folder / 'raw_output'
+        self.raw_folder.mkdir(parents=True, exist_ok=True)
        
         if self.use_docker:
             self.docker_folder = self.docker_base_folder / runs
@@ -129,7 +131,7 @@ class AppForge:
     def compile_log(self, task_id):
         return self.apk_folder(task_id) / 'compile.log'
     def raw_log_file(self, task_id):
-        return self.apk_folder(task_id) / 'raw_output.log'
+        return self.raw_folder / f'{task_id}.log'
     def test_log(self, task_id):
         return self.apk_folder(task_id) / 'test.log'
     def fuzz_log(self, task_id):
