@@ -57,21 +57,24 @@ class AppForge:
             self.docker_folder = self.docker_base_folder / runs
             self.emulator_id='emulator-5554'
             client = docker.from_env()
-            
+
+            # Use default image name if docker_name is empty
+            if not docker_name:
+                docker_name = 'zenithfocuslight/appforge:latest'
+
             print(f'AppForge: Starting docker {docker_name}...')
-            self.container = client.containers.run(
-                docker_name,
-                ports={f'{docker_port}/tcp': docker_port},  
-                devices=['/dev/kvm:/dev/kvm'], 
-                detach=True,
-                volumes={
-                    str(self.base_folder): {  # 主机目录
-                        'bind': str(self.docker_base_folder),  # 容器内目录
-                        'mode': 'rw'  # 读写模式
-                    }
-                },
-                privileged=True,
-            )   
+            # Use subprocess to run docker command directly (avoids Python SDK command issue)
+            docker_cmd = [
+                'docker', 'run', '-d',
+                '--privileged',
+                '--device', '/dev/kvm:/dev/kvm',
+                '-p', f'{docker_port}:{docker_port}',
+                '-v', f'{str(self.base_folder)}:{str(self.docker_base_folder)}:rw',
+                docker_name
+            ]
+            result = subprocess.run(docker_cmd, capture_output=True, text=True, check=True)
+            container_id = result.stdout.strip()
+            self.container = client.containers.get(container_id)   
             print('AppForge: Waiting emulator on docker to get online...')
             while True:
                 print('AppForge: This might take a while (2-3min)...')
