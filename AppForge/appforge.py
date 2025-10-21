@@ -179,7 +179,7 @@ class AppForge:
         self.apk_folder(task_id).mkdir()
 
         with open(self.raw_log_file(task_id), 'a+', encoding='utf-8') as file:
-            print('='*20)
+            file.write('='*20+'\n')
             if raw_log:
                 file.write(raw_log)
         if changed:
