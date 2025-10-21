@@ -97,13 +97,13 @@ if __name__ == "__main__":
                     template_repo = Path(args.template_path))
             else:
                 assert 0,f"No such model {args.model}"
-            changed = simpleAgent.solve(evaluator.description(task_id)['features'])
-            compile_error = evaluator.compile_json_based_on_template(changed, task_id)
+            raw_log, changed = simpleAgent.solve(evaluator.description(task_id)['features'])
+            compile_error = evaluator.compile_json_based_on_template(changed, task_id, raw_log=raw_log)
             for i in range(args.self_fix_attempts):
                 if compile_error is None:
                     break
-                changed = simpleAgent.repair(compile_error)
-                compile_error = evaluator.compile_json_based_on_template(changed, task_id)
+                raw_log, changed = simpleAgent.repair(compile_error)
+                compile_error = evaluator.compile_json_based_on_template(changed, task_id, raw_log=raw_log)
             done[task_id] = True
         if args.fuzz:
             print(evaluator.evaluation(list(done.keys())))
