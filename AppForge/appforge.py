@@ -178,7 +178,8 @@ class AppForge:
         remove_directory(self.apk_folder(task_id))
         self.apk_folder(task_id).mkdir()
 
-        with open(self.raw_log_file(task_id), 'w+', encoding='utf-8') as file:
+        with open(self.raw_log_file(task_id), 'a+', encoding='utf-8') as file:
+            print('='*20)
             if raw_log:
                 file.write(raw_log)
         if changed:
