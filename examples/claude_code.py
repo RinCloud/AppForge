@@ -63,6 +63,6 @@ You should directly modify the file in the given file directory to implement the
                         changed[rel] = new_text
 
 
-        return changed
+        return 'No raw log provided', changed
 
    
