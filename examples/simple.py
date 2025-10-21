@@ -109,6 +109,6 @@ Your generated code can't be successfully compiled!\n"
             
         answer = self.llm(self.messages)['parsed_output']
         self.messages.append({"role": "assistant", "content": answer})
-        return self.output_parser(answer)
+        return answer, self.output_parser(answer)
 
         
