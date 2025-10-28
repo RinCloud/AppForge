@@ -47,7 +47,7 @@ Make sure you have Android Studio and SDK installed on your machine. For users w
 Download evaluation repo and install dependencies.
 
 ```
-git pull https://github.com/PKU-ASE-RISE/AppForge_Bench.git
+git pull https://github.com/AppForge-Bench/AppForge
 cd AppForge_Bench
 pip install -r requirements.txt
 
@@ -58,7 +58,7 @@ python -m uiautomator2 init
 Then download then repo and install our module **AppForge**:
 
 ```python
-git clone https://github.com/PKU-ASE-RISE/AppForge
+git clone https://github.com/AppForge-Bench/AppForge
 
 cd AppForge
 pip install -e .
