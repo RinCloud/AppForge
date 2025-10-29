@@ -33,7 +33,7 @@ def simple_output_parser(output):
     
 def simple_prompt(description, base_repo):
         system_prompt = 'You are an autonomous programmer and you are modifying a default Android app template with empty activity.\n'
-        system_prompt += "Your code will be compiled with Gradle7.5.1 and run on Nexus_4_API_31.\n"
+        system_prompt += "Your code will be compiled with Android API 31.\n"
         user_prompt = f'''
 The default Android app template "File Structure" is shown below. \
 You can replace or add some files in the templates to implement the app.
