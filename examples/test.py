@@ -91,7 +91,7 @@ if __name__ == "__main__":
                     template_repo = Path(args.template_path))
             elif args.model == 'claude_code':
                 assert args.self_fix_attempts==0
-                simpleAgent = claude_code(args.workspace,args.template_path)
+                simpleAgent = claude_code(args.workspace, args.template_path, evaluator, task_id)
             elif args.model == 'naive':
                 simpleAgent = simple_agent(simple_output_parser, naive(),\
                     template_repo = Path(args.template_path))
