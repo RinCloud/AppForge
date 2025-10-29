@@ -1,4 +1,4 @@
-from LLMs import qwen3_coder,naive,deepseekchat,deepseekr1
+from LLMs import qwen3_coder,naive,deepseekchat,deepseekr1,gpt4o,gpt4,gpt3
 from claude_code import claude_code
 import json,os,random,tarfile
 from pathlib import Path
