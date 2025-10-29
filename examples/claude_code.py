@@ -1,4 +1,5 @@
 import os, shutil, json
+import subprocess
 from pathlib import Path
 
 class claude_code():
@@ -30,7 +31,8 @@ You should directly modify the file in the given file directory to implement the
     
     def run(self, workspace, desc):
         cmd = ['claude','-p',f'"{self.simple_prompt(desc)}"','--add-dir','./','--allowed-tools','"Bash(*),Edit,Write,MultiEdit"']
-        output = subprocess.run(cmd,capture_output=True,text=True,cwd=str(workspace.resolve())).stdout
+        workspace_path = Path(workspace).resolve()
+        output = subprocess.run(cmd,capture_output=True,text=True,cwd=str(workspace_path)).stdout
 
 
     
@@ -40,7 +42,7 @@ You should directly modify the file in the given file directory to implement the
         if not src.is_dir():
             raise ValueError(f"template_path not exists: {template_path}")
 
-        workspace = self.workspace
+        workspace = Path(self.workspace)
         
         shutil.rmtree(workspace, ignore_errors=True)
         shutil.copytree(src, workspace)
