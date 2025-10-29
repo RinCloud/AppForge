@@ -2,14 +2,16 @@ import os, shutil, json
 from pathlib import Path
 
 class claude_code():
-    def __init__(self, workspace, template_path):
+    def __init__(self, workspace, template_path, evaluator, task_id):
         self.workspace = workspace
         self.template_path = template_path
+        self.evaluator = evaluator
+        self.task_id = task_id
         
         
     def simple_prompt(self, description):
         system_prompt = 'You are an autonomous programmer and you are modifying a default Android app template with empty activity in local directory.\n'
-        system_prompt += "Your code will be compiled with Gradle7.5.1 and run on Nexus_4_API_31.\n"
+        system_prompt += "Your code will be compiled with Android API 31. \n"
         user_prompt = f'''You can replace or add some files in the templates to implement the app.
 Your app should implement every feature in 'App Features', and we'll test on each of the features. \
 Note that you should pay attention to the resource-id, content-desc, texts and other attributes we provide with corresponding widgets in 'App Features' \
@@ -19,6 +21,11 @@ and exactly match the attributes when implementing the widgets.
 
 You should directly modify the file in the given file directory to implement the app.
 '''
+        if self.evaluator.use_docker:
+            docker_cmd = 'docker  exec -it  -w  {self.evaluator.docker_apk_folder(self.task_id)} {self.evaluator.container.id} ./gradlew build'
+            user_prompt += f"You can use '{docker_cmd}' command to compile your code."        
+        else:
+            user_prompt += "You can use './gradlew build' command to compile your code."        
         return system_prompt+user_prompt
     
     def run(self, workspace, desc):
