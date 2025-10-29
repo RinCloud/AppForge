@@ -119,7 +119,6 @@ class AppForge:
         return {
             'task': self.task_sheet[task_id]["app_key"],
             'features':self.task_sheet[task_id]["refined_features"],
-            'gradle_version':'7.5.1',
             'api_version':'Android 12',
             'device':'Nexus 4',
         }
